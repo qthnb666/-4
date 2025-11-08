@@ -1,0 +1,33 @@
+{
+  "name": "Vue-Flask-MySQL实验环境",
+  "image": "mcr.microsoft.com/devcontainers/python:1-3.11-bullseye",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "18"
+    },
+    "ghcr.io/devcontainers/features/mysql:1": {
+      "version": "8.0"
+    }
+  },
+  "forwardPorts": [8080, 5000, 3306],
+  "portsAttributes": {
+    "8080": {
+      "label": "Vue前端",
+      "onAutoForward": "notify"
+    },
+    "5000": {
+      "label": "Flask后端",
+      "onAutoForward": "notify"
+    }
+  },
+  "postCreateCommand": "pip install flask flask-cors pymysql python-dotenv && npm install -g @vue/cli",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "bradlc.vscode-tailwindcss",
+        "formulahendry.auto-close-tag"
+      ]
+    }
+  }
+}
